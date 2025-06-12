@@ -1,0 +1,95 @@
+{
+  "configVersion": 1,
+  "timestamp": 1749735102906,
+  "index": "/time-logger/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/time-logger/chunk-3JUJ7UJD.js",
+        "/time-logger/chunk-3P6UWYY4.js",
+        "/time-logger/chunk-4QVMY6U7.js",
+        "/time-logger/chunk-BLDKN7BM.js",
+        "/time-logger/chunk-DKV5RPVI.js",
+        "/time-logger/chunk-KLHX2AG3.js",
+        "/time-logger/chunk-OZQX2S7Q.js",
+        "/time-logger/chunk-OZT6WOGH.js",
+        "/time-logger/chunk-Q3GNHSWQ.js",
+        "/time-logger/favicon.ico",
+        "/time-logger/index.html",
+        "/time-logger/main-62QWO5RX.js",
+        "/time-logger/manifest.webmanifest",
+        "/time-logger/polyfills-FFHMD2TL.js",
+        "/time-logger/styles-3MXLSC4G.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/time-logger/assets/apple-touch-icon.png",
+        "/time-logger/assets/awards-logo_browser.png",
+        "/time-logger/assets/awards-logo_iphone.png",
+        "/time-logger/assets/favicon.svg",
+        "/time-logger/assets/icons/icon-192x192.png",
+        "/time-logger/assets/icons/icon-512x512.png",
+        "/time-logger/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/time-logger/assets/apple-touch-icon.png": "c164741a7e7dc24f678b7d1e5d35035a66f5d174",
+    "/time-logger/assets/awards-logo_browser.png": "9f919ba02385915df68af0dcc07d1fc78497937c",
+    "/time-logger/assets/awards-logo_iphone.png": "3f402183dc26ad2f47a5397598efd301686a45df",
+    "/time-logger/assets/favicon.svg": "f2c002f7efd2e1bf7aeae06ccb2f3fbb76d9bcd7",
+    "/time-logger/assets/icons/icon-192x192.png": "ad747a98da61ac404eb8024553294e2a67e2e415",
+    "/time-logger/assets/icons/icon-512x512.png": "31911f463a189f6964755a60f59cf9531fea3d79",
+    "/time-logger/assets/icons/icon-96x96.png": "b77232226be4469695e7057074bb659e254e0fa8",
+    "/time-logger/chunk-3JUJ7UJD.js": "72745fa5291969f22f1dc03055ac8d91b01c1974",
+    "/time-logger/chunk-3P6UWYY4.js": "81a0dcf852bb2f552c0fa9e825b772d7b9cb1b3a",
+    "/time-logger/chunk-4QVMY6U7.js": "d7483ae42725ca11523245dde51d936e05e6cb98",
+    "/time-logger/chunk-BLDKN7BM.js": "50bfad4619f151b91ce8bbe0773c584fe1606898",
+    "/time-logger/chunk-DKV5RPVI.js": "bc98e8075ab23c800878ae9923e28c3722c7c013",
+    "/time-logger/chunk-KLHX2AG3.js": "88365dd22e2ce127fa3a3b9d3c06f900b9e16f05",
+    "/time-logger/chunk-OZQX2S7Q.js": "ba3e5e6435fcd32cfd3ec5078e647ef872a0c416",
+    "/time-logger/chunk-OZT6WOGH.js": "7c786fcec19af52ce35a46aee144b14c7871136c",
+    "/time-logger/chunk-Q3GNHSWQ.js": "42c6bfe4fc19ca2ae351b73b43ef7f9dc33ee3f3",
+    "/time-logger/favicon.ico": "e0ef57877c4e1d378b9fff739ce9af9c24f5b097",
+    "/time-logger/index.html": "377069c4bb009cd4dd32392c0beb9f3c567fdfa4",
+    "/time-logger/main-62QWO5RX.js": "45fd62943a18430d0465e4f43b616f90f7622073",
+    "/time-logger/manifest.webmanifest": "14989f7ac573ac78f48e61267ee29616170a2218",
+    "/time-logger/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
+    "/time-logger/styles-3MXLSC4G.css": "0fddb379fa7f3cee50e7a3990ef2834611d1f914"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
