@@ -1,0 +1,61 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.app-content {
+  margin-top: 64px;
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.reward-minutes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  margin: 0 16px;
+
+  mat-icon {
+    color: #FFD700;
+  }
+}
+
+button {
+  mat-icon {
+    margin-right: 8px;
+  }
+}
+
+.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 600px) {
+  .app-content {
+    margin-top: 56px;
+    padding: 8px;
+  }
+}
+.positive {
+  color: rgb(208, 244, 208);
+}
+.negative {
+  color: red;
+}

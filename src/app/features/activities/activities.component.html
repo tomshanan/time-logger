@@ -1,0 +1,218 @@
+<div class="activities-container">
+  <div class="header">
+    <h1>Activities</h1>
+    <button mat-raised-button color="primary" (click)="openNewActivity()">
+      <mat-icon>add</mat-icon>
+      New Activity
+    </button>
+  </div>
+
+  <div class="activities-section">
+    <h2>
+      <mat-icon>work</mat-icon>
+      Labour Activities
+    </h2>
+    <div class="activities-grid">
+      @for (activity of activities | activityFilter:'labour'; track activity.id)
+      {
+      <div class="activity-card-container" [class.dragging]="isDragging">
+        <div class="activity-card-background">
+          <button
+            mat-icon-button
+            (click)="editActivity(activity)"
+            class="edit-button"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <mat-card
+          class="activity-card"
+          cdkDrag
+          [cdkDragDisabled]="!isMobile"
+          [cdkDragConstrainPosition]="constrainDrag"
+          [cdkDragLockAxis]="'x'"
+          (cdkDragEnded)="onDragEnded($event, activity)"
+          (cdkDragStarted)="onDragStarted()"
+          (click)="!isDragging && openLogDrawer(activity)"
+        >
+          <mat-card-content cdkDragHandle>
+            <h3>{{ activity.name }}</h3>
+            <p class="ratio">{{ activity.ratio }}x labour per reward</p>
+          </mat-card-content>
+          <button
+            mat-icon-button
+            class="edit-button desktop-only"
+            (click)="$event.stopPropagation(); editActivity(activity)"
+            cdkDragHandle="false"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-card>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="activities-section">
+    <h2>
+      <mat-icon>stars</mat-icon>
+      Reward Activities
+    </h2>
+    <div class="activities-grid">
+      @for (activity of activities | activityFilter:'reward'; track activity.id)
+      {
+      <div class="activity-card-container" [class.dragging]="isDragging">
+        <div class="activity-card-background">
+          <button
+            mat-icon-button
+            (click)="editActivity(activity)"
+            class="edit-button"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <mat-card
+          class="activity-card"
+          cdkDrag
+          [cdkDragDisabled]="!isMobile"
+          [cdkDragConstrainPosition]="constrainDrag"
+          [cdkDragLockAxis]="'x'"
+          (cdkDragEnded)="onDragEnded($event, activity)"
+          (cdkDragStarted)="onDragStarted()"
+          (click)="!isDragging && openLogDrawer(activity)"
+        >
+          <mat-card-content cdkDragHandle>
+            <h3>{{ activity.name }}</h3>
+            <p class="ratio">{{ activity.ratio }}x reward per activity</p>
+          </mat-card-content>
+          <button
+            mat-icon-button
+            class="edit-button desktop-only"
+            (click)="$event.stopPropagation(); editActivity(activity)"
+            cdkDragHandle="false"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-card>
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- Activity Form Drawer -->
+  <div class="drawer" [class.open]="isDrawerOpen">
+    <div class="drawer-content">
+      <button mat-icon-button class="close-button" (click)="closeDrawer()">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      @if (isLoggingActivity) {
+      <h2>Log Time for {{ selectedActivity?.name }}</h2>
+      <form [formGroup]="logForm" (ngSubmit)="saveLog()">
+        <div class="time-input-group">
+          <button type="button" mat-icon-button (click)="adjustTime(-15)">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <mat-form-field appearance="outline">
+            <mat-label>Minutes</mat-label>
+            <input
+              matInput
+              type="number"
+              formControlName="minutes"
+              required
+              min="1"
+              step="1"
+            />
+            <mat-hint>Enter time in minutes</mat-hint>
+          </mat-form-field>
+          <button type="button" mat-icon-button (click)="adjustTime(15)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+
+        <div class="form-actions">
+          <button mat-button type="button" (click)="closeDrawer()">
+            Cancel
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!logForm.valid"
+          >
+            Log Time
+          </button>
+        </div>
+      </form>
+      } @else {
+      <h2>{{ editingActivity ? "Edit Activity" : "New Activity" }}</h2>
+      <form [formGroup]="activityForm" (ngSubmit)="saveActivity()">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="type" required>
+            <mat-option value="labour">Labour</mat-option>
+            <mat-option value="reward">Reward</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <ng-container [ngSwitch]="activityForm.get('type')?.value">
+          <mat-form-field appearance="outline" *ngSwitchCase="'labour'">
+            <mat-label>Labour to Reward Ratio</mat-label>
+            <input
+              matInput
+              type="number"
+              formControlName="ratio"
+              required
+              min="0.1"
+              step="0.1"
+            />
+            <mat-hint>Labour minutes needed per reward minute</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" *ngSwitchCase="'reward'">
+            <mat-label>Cost Rate</mat-label>
+            <input
+              matInput
+              type="number"
+              formControlName="ratio"
+              required
+              min="0.1"
+              step="0.1"
+            />
+            <mat-hint>Reward minutes needed per activity minute</mat-hint>
+          </mat-form-field>
+        </ng-container>
+
+        <div class="form-actions">
+          @if (editingActivity) {
+          <button
+            mat-button
+            color="warn"
+            type="button"
+            (click)="deleteActivity(editingActivity)"
+          >
+            Delete Activity
+          </button>
+          }
+          <button mat-button type="button" (click)="closeDrawer()">
+            Cancel
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!activityForm.valid"
+          >
+            {{ editingActivity ? "Update" : "Create" }}
+          </button>
+        </div>
+      </form>
+      }
+    </div>
+  </div>
+</div>

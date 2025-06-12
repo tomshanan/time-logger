@@ -1,0 +1,135 @@
+.time-logs-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  table {
+    width: 100%;
+
+    .mat-column-actions {
+      width: 70px;
+      text-align: center;
+    }
+
+    .mat-column-type {
+      width: 120px;
+    }
+
+    .mat-column-minutes {
+      width: 100px;
+    }
+
+    mat-icon {
+      vertical-align: middle;
+      margin-right: 8px;
+
+      &.labour {
+        color: #1976d2;
+      }
+
+      &.reward {
+        color: #43a047;
+      }
+    }
+  }
+
+  .mobile-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .log-card {
+      width: 100%;
+      border-radius: 8px;
+
+      mat-card-header {
+        padding: 16px 16px 0;
+
+        mat-card-title {
+          display: flex;
+          align-items: center;
+          font-size: 1.1rem;
+          margin-bottom: 8px;
+
+          mat-icon {
+            margin-right: 8px;
+
+            &.labour {
+              color: #1976d2;
+            }
+
+            &.reward {
+              color: #43a047;
+            }
+          }
+        }
+
+        mat-card-subtitle {
+          margin-bottom: 0;
+        }
+      }
+
+      mat-card-content {
+        padding: 16px;
+
+        .card-details {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+
+          .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .label {
+              color: rgba(0, 0, 0, 0.54);
+              font-size: 0.9rem;
+            }
+
+            .value {
+              font-weight: 500;
+            }
+          }
+        }
+      }
+
+      mat-card-actions {
+        padding: 8px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 767px) {
+  .time-logs-container {
+    padding: 16px;
+
+    .header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+
+      h1 {
+        text-align: center;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
