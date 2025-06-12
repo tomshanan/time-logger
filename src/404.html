@@ -1,5 +1,4 @@
 <script>
-  var path = window.location.pathname;
-  var newPath = path.replace(/\/$/, "") + "/index.html";
-  window.location.replace(newPath);
+  var redirectTo = "/time-logger/index.html" + location.search + location.hash;
+  window.location.replace(redirectTo);
 </script>
