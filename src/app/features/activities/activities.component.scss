@@ -148,17 +148,25 @@
 .drawer {
   position: fixed;
   top: 0;
-  right: -400px;
-  width: 400px;
+  right: -100%;
+  width: 100vw;
   height: 100vh;
   background: white;
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
   transition: right 0.3s ease-in-out;
   z-index: 1000;
+  pointer-events:none;
+
 
   &.open {
     right: 0;
+    pointer-events:auto;
   }
+
+  @media (min-width: 768px) {
+    width: 400px;
+  }
+
 }
 
 .drawer-content {
