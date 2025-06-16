@@ -25,7 +25,6 @@ import { ActivitiesService } from './services/activities.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'time-logger';
   rewardMinutes = this.activitiesService.availableRewardMinutes();
   isAuthenticated$: Observable<boolean>;
 
